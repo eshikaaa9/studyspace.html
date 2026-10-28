@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudySpace – Student Task Planner</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="logo">📚 <span>StudySpace</span></div>
+    <p class="tagline">Plan smart. Study better.</p>
+  </header>
+
+  <main class="container">
+    <!-- ===== Dashboard stats ===== -->
+    <section class="stats">
+      <div class="card stat"><span class="icon">📋</span><div><h3 id="totalCount">0</h3><p>Total Tasks</p></div></div>
+      <div class="card stat"><span class="icon">⏳</span><div><h3 id="pendingCount">0</h3><p>Pending</p></div></div>
+      <div class="card stat"><span class="icon">✅</span><div><h3 id="completedCount">0</h3><p>Completed</p></div></div>
+      <div class="card stat"><span class="icon">📅</span><div><h3 id="todayCount">0</h3><p>Due Today</p></div></div>
+    </section>
+
+    <!-- ===== Progress bar ===== -->
+    <section class="card progress-card">
+      <div class="progress-head">
+        <h2>Your Progress</h2>
+        <span id="progressText">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </section>
+
+    <div class="layout">
+      <!-- ===== Add / Edit task form ===== -->
+      <section class="card form-card">
+        <h2 id="formTitle">➕ Add New Task</h2>
+        <form id="taskForm" novalidate>
+          <label for="title">Task Title</label>
+          <input type="text" id="title" placeholder="e.g. Finish math homework" />
+
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="e.g. Mathematics" />
+
+          <label for="deadline">Deadline</label>
+          <input type="date" id="deadline" />
+
+          <label for="priority">Priority</label>
+          <select id="priority">
+            <option value="High">🔴 High</option>
+            <option value="Medium" selected>🟡 Medium</option>
+            <option value="Low">🟢 Low</option>
+          </select>
+
+          <label for="type">Task Type</label>
+          <select id="type">
+            <option>Assignment</option>
+            <option>Exam</option>
+            <option>Project</option>
+            <option>Reading</option>
+            <option>Other</option>
+          </select>
+
+          <p class="error" id="formError"></p>
+
+          <div class="form-buttons">
+            <button type="submit" class="btn btn-primary" id="submitBtn">Add Task</button>
+            <button type="button" class="btn btn-light hidden" id="cancelEditBtn">Cancel</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ===== Task list ===== -->
+      <section class="card list-card">
+        <div class="list-head">
+          <h2>📝 My Tasks</h2>
+          <div class="filters">
+            <button class="filter active" data-filter="all">All</button>
+            <button class="filter" data-filter="pending">Pending</button>
+            <button class="filter" data-filter="completed">Completed</button>
+            <button class="filter" data-filter="overdue">Overdue</button>
+          </div>
+        </div>
+        <ul id="taskList" class="task-list"></ul>
+        <p id="emptyMessage" class="empty hidden">🎉 No tasks here. Enjoy your free time!</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Toast message for success notifications -->
+  <div id="toast" class="toast"></div>
+
+  <footer class="footer">Made with 💜 for students · StudySpace</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
